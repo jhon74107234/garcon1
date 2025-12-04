@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Sistema Academico Garcon</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Académica</title>
+    <!-- CSS en línea para un único archivo, con un diseño moderno --><style>
+        :root {
+            --primary-color: #4f46e5; /* Indigo (Mantenido para otros elementos) */
+            --secondary-color: #10b981; /* Green/Admin */
+            --docente-color: #3b82f6; /* Blue/Docente */
+            --estudiante-color: #f59e0b; /* Amber/Estudiante */
+            --danger-color: #ef4444; /* Red */
+            --bg-color: #f3f4f6; /* Fondo claro general */
+            --card-bg: rgba(255, 255, 255, 0.95); /* Blanco con ligera transparencia */
+            --welcome-card-color: rgba(167, 243, 208, 0.9); 
+            --text-color: #1f2937;
+            --mustard-color: #e4ded8; /* Mostaza (Amber 700) - Usado en Nav */
+            --guindo-color: #880000; /* Guindo/Maroon */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
+            
+        }
+
+        main::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: transparent; 
+            z-index: -1;
+        }
+         /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: #d1d5db;
+            padding: 3rem 0;
+            margin-top: auto;
+        }
+        
+        /* Nav Bar - Fondo Mostaza y texto blanco */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--mustard-color); 
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+            position: relative; 
+        }
+        
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white; 
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white; 
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2); 
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center; 
+            min-height: calc(10px - 100px); 
+            position: relative;
+             background-image: url("img/garcon8 (3).jpg"); 
+        }
+
+        .content-card {
+            background-color: var(--welcome-card-color); 
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 3000px;
+            width: 200%;
+            text-align: center;
+        }
+        
+        .welcome-background {
+            background-color: transparent !important; 
+            /* Se asume que 'transferir.jpg' es una imagen cargada. Se usa color de fallback. */
+            background-image: url('transfe.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: white; 
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9); 
+            overflow: hidden; 
+            min-height: 350px; 
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        
+        .welcome-background::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(59, 130, 246, 0.3); 
+            z-index: 1; 
+        }
+
+        .welcome-background > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .dashboard-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 2rem;
+            background-color: var(--card-bg); 
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            min-height: 500px; 
+            text-align: left; 
+        }
+
+        /* Sidebar para la vista de Estudiante */
+        .sidebar {
+            width: 250px;
+            background-color: #f9fafb; 
+            padding: 1rem 0;
+            border-right: 1px solid #e5e7eb;
+            border-radius: 1rem 0 0 1rem;
+        }
+
+        .sidebar-header {
+            font-size: 1.25rem;
+            font-weight: 700;
+            padding: 0 1rem 0.75rem;
+            color: var(--estudiante-color);
+            border-bottom: 2px solid var(--estudiante-color);
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+        .sidebar-nav a:hover, .sidebar-nav a.active {
+            background-color: #fffbeb; /* Amber 50 */
+            color: var(--estudiante-color);
+            border-left: 4px solid var(--estudiante-color);
+        }
+
+        .dashboard-main-content {
+            flex-grow: 1;
+            padding: 2rem;
+            width: 100%; /* Asegurar que el contenido crezca */
+        }
+
+        /* Contenedor principal de los Dashboards */
+        .dashboard-view {
+            width: 100%;
+            max-width: 1000px; /* Ampliado para tablas grandes */
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: white; 
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilos generales de tabla */
+        .academic-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            text-align: left;
+            overflow: hidden;
+            margin-top: 1.5rem;
+        }
+
+        .academic-table th, .academic-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            vertical-align: middle; 
+            text-align: center;
+        }
+        
+        /* Campo de entrada de notas (Solo para Docentes) */
+        .academic-table input[type="number"] {
+            width: 60px;
+            padding: 0.4rem;
+            border: 1px solid #ccc;
+            border-radius: 0.375rem;
+            text-align: center;
+            font-weight: 500;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .academic-table input[type="number"]:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+            outline: none;
+        }
+
+        /* Alineación izquierda para nombre y código */
+        .academic-table th:first-child, .academic-table td:first-child,
+        .academic-table th:nth-child(2), .academic-table td:nth-child(2) {
+             text-align: left;
+        }
+        /* Para la tabla de estudiante, el primero es Materia */
+        .estudiante-table th:first-child, .estudiante-table td:first-child {
+             text-align: left;
+        }
+
+
+        .academic-table th {
+            background-color: var(--docente-color);
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        
+        /* Estilos específicos para la tabla de notas del estudiante */
+        .estudiante-table th {
+             background-color: var(--estudiante-color);
+        }
+        
+        .estudiante-table tr:hover td {
+            background-color: #fffbeb; /* Amber 50 */
+        }
+        
+        .academic-table tbody tr:hover td {
+            background-color: #f3f8ff; 
+        }
+        
+        .materia-table {
+            max-width: 800px; /* Estilo específico para la lista inicial de materias */
+            margin: 2rem auto;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .materia-table th:first-child { border-radius: 0.75rem 0 0 0; }
+        .materia-table th:last-child { border-radius: 0 0.75rem 0 0; }
+
+        .materia-action-button, #back-to-materias, .add-student-button {
+            background-color: var(--mustard-color); 
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+            white-space: nowrap; 
+        }
+        .guardar-button {
+            background-color: var(--secondary-color) !important;
+        }
+        .add-student-button {
+            background-color: var(--docente-color) !important;
+            margin-right: 0.5rem;
+        }
+
+        .materia-action-button:hover, #back-to-materias:hover, .add-student-button:hover {
+            background-color: #b45309; 
+            transform: translateY(-1px);
+        }
+        .add-student-button:hover {
+            background-color: #2563eb !important;
+        }
+        
+        #back-to-materias {
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        /* Modal y Media Queries se mantienen sin cambios mayores */
+        .modal {
+            display: none; 
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7); 
+            backdrop-filter: blur(4px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg); 
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: var(--danger-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            text-align: left;
+        }
+        .modal-content input[type="text"], 
+        .modal-content input[type="password"],
+        .modal-content select,
+        .modal-content input[type="number"] { /* Añadido input[type="number"] */
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.5rem;
+            box-sizing: border-box;
+            transition: border-color 0.3s;
+        }
+        .modal-content button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        #login-message, #add-student-message {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .materia-table {
+                max-width: 100%;
+            }
+            .academic-table th, .academic-table td {
+                padding: 0.5rem;
+            }
+            .academic-table input[type="number"] {
+                width: 50px; /* Reducir en móvil */
+            }
+            .dashboard-container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e5e7eb;
+                border-radius: 1rem 1rem 0 0;
+            }
+            .dashboard-main-content {
+                padding: 1rem;
+            }
+        }
+        
+    </style>
+
+
+
+  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión Académica - Firebase</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --secondary-color: #10b981;
+            --docente-color: #3b82f6;
+            --estudiante-color: #f59e0b;
+            --danger-color: #ef4444;
+            --bg-color: #f3f4f6;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --welcome-card-color: rgba(167, 243, 208, 0.9); 
+            --text-color: #1f2937;
+            --mustard-color: #D97706;
+            --guindo-color: #880000;
+        }
+
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; color: var(--text-color); background-color: var(--bg-color); }
+        main::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: transparent; z-index: -1; }
+        
+        nav { display: flex; justify-content: space-between; align-items: center; background-color: var(--mustard-color); padding: 1rem 2rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); position: relative; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: white; }
+        .nav-links { list-style: none; display: flex; gap: 1.5rem; margin: 0; padding: 0; }
+        .nav-links a { text-decoration: none; color: white; font-weight: 500; padding: 0.5rem 0.75rem; border-radius: 0.5rem; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover { background-color: rgba(255, 255, 255, 0.2); }
+
+        main { padding: 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 65px); position: relative; }
+        .content-card { background-color: var(--welcome-card-color); padding: 2rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); max-width: 600px; width: 100%; text-align: center; }
+        
+        .welcome-background {
+            /* background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); 
+            background-size: cover; background-position: center; position: relative; color: white; text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9); 
+            min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center; */
+            background-color: transparent !important; 
+            /* Se asume que 'transferir.jpg' es una imagen cargada. Se usa color de fallback. */
+            background-image: url('transferir.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+            color: white; 
+            text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.9); 
+            overflow: hidden; 
+            min-height: 600px; 
+            padding: 2rem;
+            border-radius: 1rem;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+        }
+        .welcome-background::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(59, 130, 246, 0.4); z-index: 1; border-radius: 1rem; }
+        .welcome-background > * { position: relative; z-index: 2; }
+
+        .dashboard-view { width: 100%; max-width: 1000px; margin: 2rem auto; padding: 2rem; background-color: white; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); }
+        
+        .academic-table { width: 100%; border-collapse: separate; border-spacing: 0; text-align: left; overflow: hidden; margin-top: 1.5rem; }
+        .academic-table th, .academic-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb; vertical-align: middle; text-align: center; }
+        .academic-table th { background-color: var(--docente-color); color: white; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; }
+        
+        .academic-table input[type="number"] { width: 60px; padding: 0.4rem; border: 1px solid #ccc; border-radius: 0.375rem; text-align: center; font-weight: 500; }
+        .academic-table input[type="number"]:focus { border-color: var(--primary-color); outline: none; box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2); }
+
+        .materia-action-button, #back-to-materias, .add-student-button, .btn-delete {
+            background-color: var(--mustard-color); color: white; padding: 0.5rem 1rem; border: none; border-radius: 0.5rem; cursor: pointer; font-weight: 600; transition: 0.2s;
+        }
+        .guardar-button { background-color: var(--secondary-color) !important; }
+        .add-student-button { background-color: var(--docente-color) !important; margin-right: 0.5rem; }
+        .btn-delete { background-color: var(--danger-color) !important; font-size: 0.8rem; padding: 0.3rem 0.6rem; }
+        .materia-action-button:hover, .btn-delete:hover { transform: translateY(-1px); filter: brightness(1.1); }
+
+        /* Modales */
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); backdrop-filter: blur(4px); justify-content: center; align-items: center; }
+        .modal-content { background-color: var(--card-bg); padding: 2rem; border-radius: 1rem; max-width: 400px; width: 90%; position: relative; }
+        .close-button { float: right; font-size: 28px; font-weight: bold; cursor: pointer; color: #aaa; }
+        .close-button:hover { color: var(--danger-color); }
+        .modal-content input, .modal-content select { width: 100%; padding: 0.75rem; margin-bottom: 1rem; border: 1px solid #d1d5db; border-radius: 0.5rem; box-sizing: border-box; }
+        .modal-content button { background-color: var(--primary-color); color: white; padding: 0.75rem 1rem; border: none; border-radius: 0.5rem; cursor: pointer; width: 100%; margin-top: 1rem; font-weight: bold; }
+
+        .loader { border: 4px solid #f3f3f3; border-radius: 50%; border-top: 4px solid var(--primary-color); width: 30px; height: 30px; animation: spin 1s linear infinite; margin: 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        @media (max-width: 768px) {
+            .dashboard-container { flex-direction: column; }
+            .academic-table input[type="number"] { width: 50px; }
+            .academic-table th, .academic-table td { padding: 0.5rem; font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo"></div>
+        <ul class="nav-links">
+            <li><a id="nav-login"></a></li>
+            <li id="nav-logout-item" style="display:none;"><a id="nav-logout">Salir</a></li>
+        </ul>
+    </nav>
+
+    <main id="contenido-principal">
+        <div class="content-card" id="main-content-area">
+            </div>
+    </main>
+
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('login-modal')">&times;</span>
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <label>Usuario:</label> <input type="text" id="username" required placeholder="Ej: DOC">
+                <label>Contraseña:</label> <input type="password" id="password" required>
+                <button type="submit">Acceder</button>
+                <p id="login-message" style="color: var(--danger-color); margin-top: 10px;"></p>
+            </form>
+        </div>
+    </div>
+
+    <div id="add-student-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('add-student-modal')">&times;</span>
+            <h2>Agregar Estudiante</h2>
+            <form id="add-student-form">
+                <label>ID Estudiante (Numérico):</label>
+                <input type="number" id="new-student-id" required min="1000" placeholder="Ej: 1005">
+                <label>Nombre Completo:</label>
+                <input type="text" id="new-student-name" required placeholder="Ej: Maria Pérez">
+                <button type="submit">Registrar</button>
+                <p id="add-student-message" style="color: var(--danger-color); margin-top: 10px; text-align: center;"></p>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+        import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc, query, where, writeBatch } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js";
+
+        // --- CONFIGURACIÓN DE FIREBASE ---
+        // ¡¡¡REEMPLAZA ESTO CON TUS DATOS REALES DE FIREBASE CONSOLE!!!
+     /*    const firebaseConfig = {
+            apiKey: "AIzaSyDqd_yvB-JLmXjO760VUysNTGtN_L7WcRU",
+            authDomain: "prueba-fd5ee.firebaseapp.com",
+            projectId: "prueba-fd5ee",
+            storageBucket: "prueba-fd5ee.firebasestorage.app",
+            messagingSenderId: "153163431024",
+            appId: "1:153163431024:web:410976509e12328bdd88b5",
+            measurementId: "G-R0W6GC1BN6"
+        };
+ */
+            const firebaseConfig = {
+            apiKey: "AIzaSyBCwU9tuqUvKUdek4IzpHD2LxMxPD-IWss",
+            authDomain: "garconnotas.firebaseapp.com",
+            projectId: "garconnotas",
+            storageBucket: "garconnotas.firebasestorage.app",
+            messagingSenderId: "177659325320",
+            appId: "1:177659325320:web:daa1e2a93e50127593a83d",
+            measurementId: "G-2NBBRCFT96"
+};
+        // Inicializar Firebase
+        let app, db;
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getFirestore(app);
+        } catch (e) {
+            console.error("Error iniciando Firebase. Verifica la configuración.", e);
+            alert("Error: Configura las credenciales de Firebase en el código HTML.");
+        }
+
+        // --- ESTADO GLOBAL ---
+        let loggedInUser = null; 
+        let currentMateria = null;
+        let materiasCache = [];
+        let studentsCache = [];
+        let notesCache = [];
+
+        // --- REFERENCIAS DOM ---
+        const mainContent = document.getElementById('main-content-area');
+        const loginModal = document.getElementById('login-modal');
+        const addStudentModal = document.getElementById('add-student-modal');
+        const navLogin = document.getElementById('nav-login');
+        const navLogout = document.getElementById('nav-logout');
+
+        // --- LÓGICA DE BASE DE DATOS (SEEDING) ---
+        // Verifica si la BD está vacía y carga datos de ejemplo
+        async function checkAndSeedDatabase() {
+            if (!db) return;
+            const materiasSnapshot = await getDocs(collection(db, "materias"));
+            
+            if (materiasSnapshot.empty) {
+                console.log("Base de datos vacía. Iniciando carga de datos de ejemplo...");
+                const batch = writeBatch(db);
+
+                // 1. Crear Usuarios
+                const usersData = [
+                    { username: 'DOC', password: '123', role: 'Docente' },
+                    { username: 'ADMIN', password: '123', role: 'Administrador' },
+                    { username: 'JHON', password: '123', role: 'Estudiante', studentId: '1004' }
+                ];
+                usersData.forEach(u => batch.set(doc(db, "users", u.username), u));
+
+                // 2. Crear Materias
+                const materiasData = [
+                    { codigo: 'DPW-302', nombre: 'Desarrollo Web Progresivo' },
+                    { codigo: 'BDD-308', nombre: 'Bases de Datos Avanzadas' },
+                    { codigo: 'PDM-307', nombre: 'Programación Móvil' }
+                ];
+                materiasData.forEach(m => batch.set(doc(db, "materias", m.codigo), m));
+
+                // 3. Crear Alumnos
+                const alumnosData = [
+                    { id: '1001', nombre: 'Ana Gómez' },
+                    { id: '1002', nombre: 'Carlos Ruiz' },
+                    { id: '1003', nombre: 'Elisa Soto' },
+                    { id: '1004', nombre: 'Jhon Doe' }
+                ];
+                alumnosData.forEach(a => batch.set(doc(db, "students", a.id), a));
+
+                // 4. Crear Notas Iniciales
+                const notasData = [
+                    { id: '1001_DPW-302', studentId: '1001', codigoMateria: 'DPW-302', t1: 66, t2: 80, t3: 90 },
+                    { id: '1002_DPW-302', studentId: '1002', codigoMateria: 'DPW-302', t1: 50, t2: 58, t3: 57 },
+                    { id: '1004_DPW-302', studentId: '1004', codigoMateria: 'DPW-302', t1: 70, t2: 75, t3: 80 }
+                ];
+                notasData.forEach(n => batch.set(doc(db, "grades", n.id), n));
+
+                await batch.commit();
+                console.log("Datos de ejemplo cargados exitosamente.");
+            }
+        }
+
+        // --- FUNCIONES DE LECTURA DE DATOS ---
+        
+        async function fetchMaterias() {
+            const querySnapshot = await getDocs(collection(db, "materias"));
+            materiasCache = [];
+            querySnapshot.forEach((doc) => materiasCache.push(doc.data()));
+            return materiasCache;
+        }
+
+        async function fetchStudents() {
+            const querySnapshot = await getDocs(collection(db, "students"));
+            studentsCache = [];
+            querySnapshot.forEach((doc) => studentsCache.push(doc.data()));
+            return studentsCache;
+        }
+
+        async function fetchGradesByMateria(codigoMateria) {
+            const q = query(collection(db, "grades"), where("codigoMateria", "==", codigoMateria));
+            const querySnapshot = await getDocs(q);
+            notesCache = [];
+            querySnapshot.forEach((doc) => notesCache.push(doc.data()));
+            return notesCache;
+        }
+        
+        async function fetchStudentGrades(studentId) {
+             const q = query(collection(db, "grades"), where("studentId", "==", studentId));
+             const querySnapshot = await getDocs(q);
+             const notas = [];
+             querySnapshot.forEach(doc => notas.push(doc.data()));
+             return notas;
+        }
+
+        // --- LÓGICA DE NEGOCIO ---
+
+        function calcularPromedio(nota) {
+            const final = ((nota.t1 + nota.t2 + nota.t3) / 3).toFixed(2);
+            return { final, estado: final >= 60 ? 'Aprobado' : 'Reprobado' };
+        }
+
+        window.guardarCambiosNotas = async function() {
+            if (!currentMateria) return;
+            const batch = writeBatch(db);
+            let updatesCount = 0;
+
+            // Iterar sobre los inputs de la tabla
+            const inputs = document.querySelectorAll('.nota-input');
+            
+            // Agrupar cambios por estudiante
+            let changesMap = {};
+
+            inputs.forEach(input => {
+                const [_, studentId, trimestre] = input.id.split('-');
+                const val = parseInt(input.value) || 0;
+                
+                if (!changesMap[studentId]) changesMap[studentId] = {};
+                changesMap[studentId][trimestre] = val;
+            });
+
+            for (const studentId in changesMap) {
+                const notaRef = doc(db, "grades", `${studentId}_${currentMateria.codigo}`);
+                const data = changesMap[studentId];
+                
+                // Buscar datos previos para no perder los otros trimestres si no se editaron
+                // Nota: En una app real, optimizaríamos esto. Aquí asumimos que los inputs tienen los valores actuales.
+                const notaObj = notesCache.find(n => n.studentId === studentId) || { t1:0, t2:0, t3:0 };
+                
+                batch.set(notaRef, {
+                    id: `${studentId}_${currentMateria.codigo}`,
+                    studentId: studentId,
+                    codigoMateria: currentMateria.codigo,
+                    t1: data.t1 !== undefined ? data.t1 : notaObj.t1,
+                    t2: data.t2 !== undefined ? data.t2 : notaObj.t2,
+                    t3: data.t3 !== undefined ? data.t3 : notaObj.t3
+                }, { merge: true });
+                updatesCount++;
+            }
+
+            try {
+                await batch.commit();
+                alert(`Se guardaron correctamente las notas.`);
+                renderDocenteGestion(currentMateria.codigo, currentMateria.nombre); // Recargar
+            } catch (e) {
+                console.error(e);
+                alert("Error guardando notas: " + e.message);
+            }
+        }
+
+        window.eliminarEstudiante = async function(studentId, nombre) {
+            if(confirm(`¿Estás seguro de que quieres eliminar a ${nombre}? \nEsto borrará al alumno y sus notas de esta materia permanentemente.`)) {
+                try {
+                    // 1. Eliminar documento de notas de esta materia
+                    await deleteDoc(doc(db, "grades", `${studentId}_${currentMateria.codigo}`));
+                    
+                    // 2. Eliminar de la colección de estudiantes (Opcional: Solo si se quiere borrar del sistema completo)
+                    // Para este ejemplo, borramos al estudiante del sistema si se desea, o solo de la lista.
+                    // Vamos a borrar al estudiante completamente para cumplir con "eliminar alumno"
+                    await deleteDoc(doc(db, "students", studentId));
+
+                    alert("Estudiante eliminado correctamente.");
+                    renderDocenteGestion(currentMateria.codigo, currentMateria.nombre);
+                } catch(e) {
+                    alert("Error eliminando: " + e.message);
+                }
+            }
+        }
+
+        // --- VISTAS ---
+
+        function renderHome() {
+            mainContent.className = 'content-card welcome-background';
+            mainContent.innerHTML = `
+                <h1 style="font-size: 2.5rem; font-weight: 800; margin-top: 1rem; color: white;">INSTITUTO GARCON</h1>
+                <p style="font-size: 1.5rem; font-weight: 600; color: white;">Sistema de Gestión v2.0</p>
+                <p style="margin-top: 1rem; color: #e0e7ff;">Conectado a Firebase Database</p>
+                <button onclick="document.getElementById('login-modal').style.display='flex'" 
+                        style="margin-top:20px; padding: 10px 20px; font-size:1.1rem; cursor:pointer; background:var(--mustard-color); color:white; border:none; border-radius:5px;">
+                    Iniciar Sesión
+                </button>
+            `;
+        }
+
+        async function renderDashboard() {
+            mainContent.className = 'content-card';
+            mainContent.style.background = 'white';
+            
+            if (loggedInUser.role === 'Docente') {
+                mainContent.innerHTML = `<div class="loader"></div><p>Cargando materias...</p>`;
+                const materias = await fetchMaterias();
+                
+                let html = `
+                    <h2 style="color:var(--docente-color)">Panel Docente</h2>
+                    <p>Bienvenido, <b>${loggedInUser.username}</b></p>
+                    <table class="academic-table">
+                        <thead><tr><th>Código</th><th>Materia</th><th>Acción</th></tr></thead>
+                        <tbody>
+                `;
+                materias.forEach(m => {
+                    html += `<tr>
+                        <td>${m.codigo}</td><td>${m.nombre}</td>
+                        <td><button class="materia-action-button" onclick="window.cargarMateria('${m.codigo}','${m.nombre}')">Gestionar</button></td>
+                    </tr>`;
+                });
+                html += `</tbody></table>`;
+                mainContent.innerHTML = html;
+            
+            } else if (loggedInUser.role === 'Estudiante') {
+                renderEstudianteView();
+            } else {
+                mainContent.innerHTML = `<h2>Panel Admin</h2><p>Funcionalidad de Admin en construcción.</p>`;
+            }
+        }
+
+        window.cargarMateria = function(codigo, nombre) {
+            currentMateria = { codigo, nombre };
+            renderDocenteGestion(codigo, nombre);
+        }
+
+        async function renderDocenteGestion(codigo, nombre) {
+            mainContent.className = 'dashboard-view';
+            mainContent.innerHTML = `<div class="loader"></div><p>Cargando alumnos y notas...</p>`;
+
+            try {
+                // Fetch paralelo
+                const [students, grades] = await Promise.all([
+                    fetchStudents(),
+                    fetchGradesByMateria(codigo)
+                ]);
+
+                // Mapear alumnos con sus notas
+                const tableData = students.map(st => {
+                    const grade = grades.find(g => g.studentId === st.id) || { t1: 0, t2: 0, t3: 0 };
+                    return { ...st, ...grade, ...calcularPromedio(grade) };
+                });
+
+                let html = `
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                        <button id="back-to-materias">← Volver</button>
+                        <h2 style="color:var(--docente-color); margin:0;">${nombre} (${codigo})</h2>
+                    </div>
+                    <hr>
+                    <div style="margin: 1rem 0; text-align:right;">
+                         <button class="add-student-button" onclick="document.getElementById('add-student-modal').style.display='flex'">+ Nuevo Estudiante</button>
+                         <button class="materia-action-button guardar-button" onclick="window.guardarCambiosNotas()">Guardar Todo</button>
+                    </div>
+
+                    <table class="academic-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>T1</th><th>T2</th><th>T3</th>
+                                <th>Final</th><th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+                if (tableData.length === 0) {
+                     html += `<tr><td colspan="8">No hay alumnos registrados.</td></tr>`;
+                }
+
+                tableData.forEach(row => {
+                    html += `
+                        <tr>
+                            <td>${row.id}</td>
+                            <td style="text-align:left;">${row.nombre}</td>
+                            <td><input type="number" class="nota-input" id="nota-${row.id}-t1" value="${row.t1}" min="0" max="100" onchange="window.actualizarUIFila('${row.id}')"></td>
+                            <td><input type="number" class="nota-input" id="nota-${row.id}-t2" value="${row.t2}" min="0" max="100" onchange="window.actualizarUIFila('${row.id}')"></td>
+                            <td><input type="number" class="nota-input" id="nota-${row.id}-t3" value="${row.t3}" min="0" max="100" onchange="window.actualizarUIFila('${row.id}')"></td>
+                            <td id="final-${row.id}" style="font-weight:bold; color:${row.estado==='Aprobado'?'var(--secondary-color)':'var(--danger-color)'}">${row.final}</td>
+                            <td id="estado-${row.id}" style="font-size:0.8rem; color:${row.estado==='Aprobado'?'var(--secondary-color)':'var(--danger-color)'}">${row.estado}</td>
+                            <td>
+                                <button class="btn-delete" onclick="window.eliminarEstudiante('${row.id}', '${row.nombre}')">Eliminar</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+
+                html += `</tbody></table>`;
+                mainContent.innerHTML = html;
+
+                document.getElementById('back-to-materias').onclick = renderDashboard;
+
+            } catch (error) {
+                console.error(error);
+                mainContent.innerHTML = `<p style="color:red">Error cargando datos: ${error.message}</p>`;
+            }
+        }
+
+        // Actualización visual inmediata (sin guardar en BD aún)
+        window.actualizarUIFila = function(id) {
+            const t1 = parseInt(document.getElementById(`nota-${id}-t1`).value) || 0;
+            const t2 = parseInt(document.getElementById(`nota-${id}-t2`).value) || 0;
+            const t3 = parseInt(document.getElementById(`nota-${id}-t3`).value) || 0;
+            
+            const final = ((t1+t2+t3)/3).toFixed(2);
+            const estado = final >= 60 ? 'Aprobado' : 'Reprobado';
+            const color = estado === 'Aprobado' ? 'var(--secondary-color)' : 'var(--danger-color)';
+
+            document.getElementById(`final-${id}`).innerText = final;
+            document.getElementById(`final-${id}`).style.color = color;
+            document.getElementById(`estado-${id}`).innerText = estado;
+            document.getElementById(`estado-${id}`).style.color = color;
+        }
+
+        async function renderEstudianteView() {
+            mainContent.className = 'dashboard-view';
+            const studentId = loggedInUser.studentId;
+            
+            mainContent.innerHTML = `<div class="loader"></div><p>Buscando tus notas...</p>`;
+            
+            // Obtener datos del alumno
+            const studentDoc = await getDocs(query(collection(db, "students"), where("id", "==", studentId)));
+            let studentName = "Estudiante";
+            if (!studentDoc.empty) studentName = studentDoc.docs[0].data().nombre;
+
+            // Obtener notas
+            const notas = await fetchStudentGrades(studentId);
+            // Obtener nombres de materias para mostrar bonito
+            const materias = await fetchMaterias();
+
+            let html = `
+                <h2 style="color:var(--estudiante-color)">Mis Calificaciones</h2>
+                <h3>${studentName} (ID: ${studentId})</h3>
+                <table class="academic-table estudiante-table">
+                    <thead><tr><th>Materia</th><th>T1</th><th>T2</th><th>T3</th><th>Final</th><th>Estado</th></tr></thead>
+                    <tbody>
+            `;
+
+            if(notas.length === 0) {
+                html += `<tr><td colspan="6">No tienes notas registradas aún.</td></tr>`;
+            } else {
+                notas.forEach(n => {
+                    const matName = materias.find(m => m.codigo === n.codigoMateria)?.nombre || n.codigoMateria;
+                    const calc = calcularPromedio(n);
+                    html += `
+                        <tr>
+                            <td style="text-align:left; font-weight:bold;">${matName}</td>
+                            <td>${n.t1}</td><td>${n.t2}</td><td>${n.t3}</td>
+                            <td style="font-weight:bold; color:${calc.estado==='Aprobado'?'var(--secondary-color)':'var(--danger-color)'}">${calc.final}</td>
+                            <td style="color:${calc.estado==='Aprobado'?'var(--secondary-color)':'var(--danger-color)'}">${calc.estado}</td>
+                        </tr>
+                    `;
+                });
+            }
+            html += `</tbody></table>
+            <button style="margin-top:20px; background:gray; color:white; padding:10px; border:none; border-radius:5px;" onclick="window.location.reload()">Cerrar Sesión</button>`;
+            
+            mainContent.innerHTML = html;
+        }
+
+
+        // --- EVENT LISTENER FORMS ---
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const user = document.getElementById('username').value.trim().toUpperCase();
+            const pass = document.getElementById('password').value;
+            const msg = document.getElementById('login-message');
+
+            msg.textContent = "Verificando...";
+            
+            try {
+                const docRef = doc(db, "users", user);
+                const docSnap = await getDocs(query(collection(db, "users"), where("username", "==", user)));
+                
+                // Simulación Auth simple usando colección 'users'
+                if (!docSnap.empty) {
+                    const userData = docSnap.docs[0].data();
+                    if (userData.password === pass) {
+                        loggedInUser = userData;
+                        closeModal('login-modal');
+                        navLogin.parentElement.style.display = 'none';
+                        navLogout.parentElement.style.display = 'block';
+                        renderDashboard();
+                    } else {
+                        msg.textContent = "Contraseña incorrecta";
+                    }
+                } else {
+                    msg.textContent = "Usuario no encontrado";
+                }
+            } catch (err) {
+                console.error(err);
+                msg.textContent = "Error de conexión";
+            }
+        });
+
+        document.getElementById('add-student-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const id = document.getElementById('new-student-id').value;
+            const name = document.getElementById('new-student-name').value;
+            const msg = document.getElementById('add-student-message');
+
+            if (!currentMateria) return;
+
+            msg.textContent = "Guardando...";
+
+            try {
+                // 1. Crear/Verificar Estudiante en colección students
+                await setDoc(doc(db, "students", id), { id: id, nombre: name }, { merge: true });
+
+                // 2. Crear documento de nota inicial en grades
+                const notaId = `${id}_${currentMateria.codigo}`;
+                // Verificar si ya existe nota para no sobrescribir
+                // Para simplificar usamos set con merge:true
+                await setDoc(doc(db, "grades", notaId), {
+                    id: notaId,
+                    studentId: id,
+                    codigoMateria: currentMateria.codigo,
+                    t1: 0, t2: 0, t3: 0
+                }, { merge: true });
+
+                alert(`Estudiante ${name} agregado al curso.`);
+                closeModal('add-student-modal');
+                document.getElementById('add-student-form').reset();
+                renderDocenteGestion(currentMateria.codigo, currentMateria.nombre);
+
+            } catch (error) {
+                msg.textContent = "Error: " + error.message;
+            }
+        });
+
+        navLogin.addEventListener('click', () => { document.getElementById('login-modal').style.display = 'flex'; });
+        
+        navLogout.addEventListener('click', () => { 
+            loggedInUser = null; 
+            navLogin.parentElement.style.display = 'block';
+            navLogout.parentElement.style.display = 'none';
+            renderHome();
+        });
+
+        window.closeModal = function(id) { document.getElementById(id).style.display = 'none'; }
+        window.onclick = function(event) { 
+            if (event.target.classList.contains('modal')) event.target.style.display = "none"; 
+        }
+
+        // Inicialización
+        checkAndSeedDatabase().then(() => {
+            renderHome();
+        });
+
+    </script>
+</body>
+</html>
+
+    <!-- Carousel Start -->
+    <div class="container-fluid p-0">
+        <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#header-carousel" data-slide-to="1"></li>
+                <li data-target="#header-carousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="img-fluid" src="img/garcon1 (1) (1).jpg" alt="Image">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <img class="img-fluid" src="img/garcon1 (1).jpg" alt="Image">
+                            <h5 class="text-primary text-uppercase mb-md-3"></h5>
+                            <h1 class="display-3 text-white mb-md-4"></h1>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid" src="img/garcon2 (1) (1).jpg" alt="Image">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <img class="img-fluid" src="img/garcon2 (1) (1).jpg" alt="Image">
+                            <h5 class="text-primary text-uppercase mb-md-3"></h5>
+                            <h1 class="display-3 text-white mb-md-4"></h1>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="img-fluid" src="img/garcon7 (1).jpg" alt="Image">
+                    <div class="carousel-caption d-flex align-items-center justify-content-center">
+                        <div class="p-5" style="width: 100%; max-width: 900px;">
+                            <img class="img-fluid" src="img/garcon7 (1).jpg" alt="Image">
+                            <h5 class="text-primary text-uppercase mb-md-3"></h5>
+                            <h1 class="display-3 text-white mb-md-4"></h1>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+         <footer id="contact">
+            <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+              
+                <div>
+        
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fa fa-map-marker mr-2"></i> BOLIVAR LA PLATA Y SORIA GALVARRO (Frente a Coteor) , Oruro, Bolivia</li>
+                        <li><i class="fa fa-phone mr-2"></i> 77157070</li>
+                        <li><i class="fa fa-envelope mr-2"></i> institutogarcon@gmail.com</li>
+                    </ul>
+                </div>
+                <div>
+                 
+                </div>
+            </div>
+            <div class="text-center mt-10 pt-6 border-t border-gray-700 text-xs">
+                <p>© 2025 Instituto Técnico Superior Garcon. Todos los derechos reservados.</p>
+            </div>
+        </footer>
+    </div>
+
+    
+  
+   
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="lib/isotope/isotope.pkgd.min.js"></script>
+    <script src="lib/lightbox/js/lightbox.min.js"></script>
+
+    <!-- Contact Javascript File -->
+    <script src="mail/jqBootstrapValidation.min.js"></script>
+    <script src="mail/contact.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+</body>
+
+</html>
